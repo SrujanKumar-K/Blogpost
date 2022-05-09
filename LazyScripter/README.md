@@ -1,10 +1,5 @@
 ## Malicious PDF Document Analysis - Lazyscripter
   ***
-### Table of Content 
-#### File-information 
-#### Work-flow
-#### Analysis
-#### IOC
 
 # File-information
  * Md5: **62610680349de97db658a7d41fc9a9b8** available in [**Any Run**](https://app.any.run/tasks/3cb42eba-669a-449f-b275-aa3777f91735/)

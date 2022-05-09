@@ -216,7 +216,7 @@ del /f microsoft-windows-security-enterprisedata-filerevocationmanager%4%nutqtmu
 </p>
 </details>
 
-After replacing the "SET" variables with the corresponding char and doing one more replacement in Cyberchef resluts a clean and readable data and the whole data is available in dropdown.
+After replacing the "SET" variables with the corresponding char and doing one more replacement in Cyberchef results a clean and readable data and the whole data is available in dropdown.
 
 ![image](https://user-images.githubusercontent.com/71969773/167426557-63f38839-02c6-4227-b4d1-a96acaaba16c.png)
 
@@ -377,7 +377,7 @@ del /f microsoft-windows-security-netlogon
 </p>
 </details>
 
-The decoded payload has capable of disabling lot and lots of security features, setting persistence using Registry and Seheduled Taks and downloading next satge payload from mentioned urls.
+The decoded payload has capable of disabling lot and lots of security features, setting persistence using Registry and Scheduled Taks and downloading next stage payload from mentioned URLs.
 
 **1.** *hxxp[://]hpsj[.]firewall-gateway[.]net:80/hpjs[.]php*
 
@@ -387,7 +387,7 @@ The decoded payload has capable of disabling lot and lots of security features, 
 
  **Final-Stage**
  
-The final payload downloaded from above 1st URL is stealing users info such as (HostName, UserName, OS Architecture (32/64) & Verion, AD-Domain, System IP,Admin-check, enumeratig all running process etc..) All these data is encrypted with **AES-CBC** and sent over to C2 server.
+The final payload downloaded from above 1st URL is stealing users info such as (HostName, UserName, OS Architecture (32/64) & Verion, AD-Domain, System IP, Admin-check, enumerating all running process etc..) All these data are encrypted with **AES-CBC** and sent over to C2 server.
 
 
 ![image](https://user-images.githubusercontent.com/71969773/167436442-a3815b93-8edd-4bc3-80a0-74ba0b6357f4.png)
@@ -400,7 +400,7 @@ Based on decoded value, the corresponding code block is going to be executed.
 
 ![c2](https://user-images.githubusercontent.com/71969773/167438432-93c680b7-cdf2-40a6-8e03-ea2f9112b05f.PNG)
 
-Similar stealing behaviour is noticed from 2nd URL as well. 
+Similar stealing behavior is noticed from 2nd URL as well. 
 
 # IOC
 | Description   | URL/Hash |

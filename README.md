@@ -21,3 +21,9 @@ Here is a simple footnote[^1].
 A footnote can also have multiple lines[^2].  
 
 You can also use words, to fit your writing style more closely[^note].
+
+ 
+ | Number | Rider        | Time
+ | 1      | Bullet Bob   | 56:07
+ | 2      | Clumsy Colin | DNF 
+ | 3      | Swift Susan  | 55:13

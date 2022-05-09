@@ -383,11 +383,27 @@ del /f microsoft-windows-security-netlogon
 
 The decoded payload has capable of disabling lot and lots of security features, setting persistence using Registry and Seheduled Taks and downloading next satge payload from mentioned urls.
 
-- *hxxp[://]hpsj[.]firewall-gateway[.]net:80/hpjs[.]php*
+**1.** *hxxp[://]hpsj[.]firewall-gateway[.]net:80/hpjs[.]php*
 
-- *hxxp[://]hpsj[.]firewall-gateway[.]net:443/uddiexplorer*
+**2.** *hxxp[://]hpsj[.]firewall-gateway[.]net:443/uddiexplorer*
 
 ![image](https://user-images.githubusercontent.com/71969773/167432115-2419633f-1c06-42ad-a363-ee9a21d01ea1.png)
 
  **Final-Stage**
  
+The final payload downloaded from above 1st URL is stealing users info such as (HostName, UserName, OS Architecture (32/64) & Verion, AD-Domain, System IP,Admin-check, enumeratig all running process etc..) All these data is encrypted with **AES-CBC** and sent over to C2 server.
+
+
+![image](https://user-images.githubusercontent.com/71969773/167436442-a3815b93-8edd-4bc3-80a0-74ba0b6357f4.png)
+
+The response from C2 server is also an AES encrypted content and for reference the returned value "LquqiDE9NWlWMN6NCrXeJg==" (extracted from Anyrun) is decoded to be "False"
+
+![image](https://user-images.githubusercontent.com/71969773/167438025-2b275aa0-2389-4413-bf61-b8564abf95e2.png)
+
+Based on decoded value, the corresponding code block is going to be executed.
+
+![c2](https://user-images.githubusercontent.com/71969773/167438432-93c680b7-cdf2-40a6-8e03-ea2f9112b05f.PNG)
+
+Similar stealing behaviour is noticed from 2nd URL as well. 
+
+

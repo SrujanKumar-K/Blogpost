@@ -4,6 +4,7 @@
 #### File-information
 #### Work-flow
 #### Analysis
+#### IOC
 
 # File-information
  * Md5: **62610680349de97db658a7d41fc9a9b8** available in [**Any Run**](https://app.any.run/tasks/3cb42eba-669a-449f-b275-aa3777f91735/)
@@ -406,4 +407,16 @@ Based on decoded value, the corresponding code block is going to be executed.
 
 Similar stealing behaviour is noticed from 2nd URL as well. 
 
-
+# IOC
+| Description   | URL/Hash |
+|:---- | :--:   | 
+| PDF | 62610680349de97db658a7d41fc9a9b8  |
+| ZIP (Dropper) | hxxp[://]128[.]199[.]7[.]40/PATCH%20CVE00456-2022[.]zip  | 
+| Batch Script | 20e9e2e20425f5b89106f6bbace5381d |
+| URL_Dropper_1 | hxxp[://]hpsj[.]firewall-gateway[.]net:80/hpjs[.]php | 
+| URL_Dropper_2 | hxxp[://]hpsj[.]firewall-gateway[.]net:443/uddiexplorer | 
+| C2 Server | hxxp[://]hpsj[.]firewall-gateway[.]net:443/operation &
+| C2 Server | hxxp[://]hpsj[.]firewall-gateway[.]net:443/proxy &
+| C2 Server | hxxp[://]hpsj[.]firewall-gateway[.]net:443/publish &
+| C2 Server | hxxp[://]hpsj[.]firewall-gateway[.]net:443/publishing	|
+|C2 Server | hxxp[://]hpsj[.]firewall-gateway[.]net:80/messages|

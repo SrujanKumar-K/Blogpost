@@ -1,7 +1,7 @@
 ## Malicious PDF Document Analysis - Lazyscripter
   ***
-### Table of Content
-#### File-information
+### Table of Content 
+#### File-information 
 #### Work-flow
 #### Analysis
 #### IOC
@@ -420,3 +420,4 @@ Similar stealing behaviour is noticed from 2nd URL as well.
 | C2 Server | hxxp[://]hpsj[.]firewall-gateway[.]net:443/publish &
 | C2 Server | hxxp[://]hpsj[.]firewall-gateway[.]net:443/publishing	|
 |C2 Server | hxxp[://]hpsj[.]firewall-gateway[.]net:80/messages|
+

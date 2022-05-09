@@ -1,2 +1,2 @@
-#Blogpost
-** BOLD data **
+# Blogpost
+

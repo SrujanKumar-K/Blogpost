@@ -2,8 +2,12 @@
   ***
 
 # File-information
+
+ LazyScripter is threat group that has mainly targeted the airlines industry since at least 2018, primarily using open-source toolsets [^1].
  * Md5: **62610680349de97db658a7d41fc9a9b8** available in [**Any Run**](https://app.any.run/tasks/3cb42eba-669a-449f-b275-aa3777f91735/)
  * File Type: PDF
+
+
 
   ![VT](https://user-images.githubusercontent.com/71969773/167416138-7e32fa97-0e43-4c86-b4c8-90b07b184d16.png)
   
@@ -416,3 +420,5 @@ Similar stealing behavior is noticed from 2nd URL as well.
 | C2 Server | hxxp[://]hpsj[.]firewall-gateway[.]net:443/publishing	|
 |C2 Server | hxxp[://]hpsj[.]firewall-gateway[.]net:80/messages|
 
+# References
+[^1]: https://attack.mitre.org/groups/G0140/

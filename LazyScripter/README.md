@@ -14,7 +14,7 @@
 # Work-flow
 ```mermaid
 graph TD;
-   PDF --> Downloads_ZIP --> BatchScript --> Powershell --> C2;
+   PDF --> Downloads_ZIP --> BatchScript --> Powershell --> CnC;
 
 ```
 # Analysis

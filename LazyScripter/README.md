@@ -24,16 +24,16 @@ We can extract PDF properties using *"PDFID"* tool and below snip shows that it 
 
 ![pdfid](https://user-images.githubusercontent.com/71969773/167419962-bc246d73-7b36-4355-95b5-26b16e26f83d.PNG)
 
-With the help of *"pdf-parser"* these URL can be extracted. The link downloads password protected ZIP and the password is hardcoded in PDF file. (Password: SSL)
+With the help of *"pdf-parser"* these URL can be extracted. The Malicious PDF file pretends to be a fake patch installation. The embedded link downloads password protected ZIP file and the password is hardcoded in PDF file.
 
 ![pdf-parser](https://user-images.githubusercontent.com/71969773/167420978-ff570896-661e-4bc8-9713-36676e13bae2.PNG)
 ![image](https://user-images.githubusercontent.com/71969773/167421586-ed1091ff-6217-4d63-be9b-43ef427f5181.png)
 
  **Stage2**
  
-The unzipped file has two batch scripts named as "SecurityDsp.bat & SSLCertificate.bat", both having identical contents with MD5 as "20e9e2e20425f5b89106f6bbace5381d"
+The unzipped file containing two batch scripts named it as "SecurityDsp.bat & SSLCertificate.bat", both having identical contents with MD5 as "20e9e2e20425f5b89106f6bbace5381d"
  
-The code is heavily obfuscated as below.  
+The code is heavily obfuscated to evade the AV detection as below.  
 
 <details><summary>Encoded</summary>
 <p>
@@ -220,7 +220,7 @@ del /f microsoft-windows-security-enterprisedata-filerevocationmanager%4%nutqtmu
 </p>
 </details>
 
-After replacing the each "SET" variables with the corresponding char and doing one more replacement in Cyberchef results a clean and readable data and the whole data is available in dropdown.
+After replacing the each "SET" variables with the corresponding char and doing one more replacement in Cyberchef results a clean and readable code. The entire code is available in below dropdown section.
 
 ![image](https://user-images.githubusercontent.com/71969773/167426557-63f38839-02c6-4227-b4d1-a96acaaba16c.png)
 
@@ -404,7 +404,7 @@ Based on decoded value, the corresponding code block is going to be executed.
 
 ![image](https://user-images.githubusercontent.com/71969773/167563465-cb0eda23-f84d-4824-a744-c94c295ebbca.png)
 
-2nd URL is also acting as a dropper and downloads payload using powershell cmdlet. The final payload has also similar stealing capabilities as mentioned earlier.
+2nd URL is also acting as a dropper and downloads payload using powershell cmdlet.After de-obfuscating several stages, the final payload has also similar behaviour of stealing functionalities as mentioned earlier.
 
 ![fin](https://user-images.githubusercontent.com/71969773/167567676-607aa8eb-2f0f-4868-9920-2813cb261a58.PNG)
 

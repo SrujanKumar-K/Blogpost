@@ -24,7 +24,7 @@ We can extract PDF properties using *"PDFID"* tool and below snip shows that it 
 
 ![pdfid](https://user-images.githubusercontent.com/71969773/167419962-bc246d73-7b36-4355-95b5-26b16e26f83d.PNG)
 
-With the help of *"pdf-parser"* these URL can be extracted. After clicking the link, it downloads password protected ZIP and the password is hardcoded in PDF file. (Password: SSL)
+With the help of *"pdf-parser"* these URL can be extracted. The link downloads password protected ZIP and the password is hardcoded in PDF file. (Password: SSL)
 
 ![pdf-parser](https://user-images.githubusercontent.com/71969773/167420978-ff570896-661e-4bc8-9713-36676e13bae2.PNG)
 ![image](https://user-images.githubusercontent.com/71969773/167421586-ed1091ff-6217-4d63-be9b-43ef427f5181.png)
@@ -391,7 +391,7 @@ The decoded payload has capable of disabling multiple security features built in
 
  **Final-Stage**
  
-The final payload downloaded from above 1st URL is scripted in Powershell and is stealing users info such as (HostName, UserName, OS Architecture (32/64) & Verion, AD-Domain, System IP, Admin-check, enumerating all running process etc..) All these data are encrypted with **AES-CBC** and sent over to C2 server.
+The final payload downloaded from above 1st URL is scripted in Powershell and steals user's info such as (HostName, UserName, OS Architecture (32/64) & Verion, AD-Domain, System IP, Admin-check, enumerating all running process etc..) All these data are encrypted with **AES-CBC** and sent over to C2 server.
 
 
 ![image](https://user-images.githubusercontent.com/71969773/167436442-a3815b93-8edd-4bc3-80a0-74ba0b6357f4.png)
@@ -404,7 +404,7 @@ Based on decoded value, the corresponding code block is going to be executed.
 
 ![image](https://user-images.githubusercontent.com/71969773/167563465-cb0eda23-f84d-4824-a744-c94c295ebbca.png)
 
-2nd URL is also acting as a dropper and downloads payload using powershell cmdlet. The final payload has also similar stealilng capabilities as mentioned earlier.
+2nd URL is also acting as a dropper and downloads payload using powershell cmdlet. The final payload has also similar stealing capabilities as mentioned earlier.
 
 ![fin](https://user-images.githubusercontent.com/71969773/167567676-607aa8eb-2f0f-4868-9920-2813cb261a58.PNG)
 

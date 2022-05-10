@@ -425,5 +425,5 @@ Based on decoded value, the corresponding code block is going to be executed.
 
 # References
 [^1]: https://attack.mitre.org/groups/G0140/
-[^2]: https://www.malwarebytes.com/resources/files/2021/02/lazyscripter.pdf
-[^3]: https://isc.sans.edu/diary/28628
+[^3]: https://www.malwarebytes.com/resources/files/2021/02/lazyscripter.pdf
+[^2]: https://isc.sans.edu/diary/28628

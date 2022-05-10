@@ -3,7 +3,7 @@
 
 # File-information
 
- LazyScripter is threat group that has mainly targeted the airlines industry since at least 2018, primarily using open-source toolsets [^1] [^2].
+ LazyScripter is a threat group that has mainly targeted the airlines industry since at least 2018, primarily using open-source toolsets [^1] [^2]. The threat actor gained initial access using malicious PDF, here are the details.
  * Md5: **62610680349de97db658a7d41fc9a9b8** available in [**Any Run**](https://app.any.run/tasks/3cb42eba-669a-449f-b275-aa3777f91735/)
  * File Type: PDF
 
@@ -24,14 +24,14 @@ We can extract PDF properties using *"PDFID"* tool and below snip shows that it 
 
 ![pdfid](https://user-images.githubusercontent.com/71969773/167419962-bc246d73-7b36-4355-95b5-26b16e26f83d.PNG)
 
-With the help of *"pdf-parser"* these URL can be extracted. The downloaded ZIP file is a password protected and it is hardcoded in PDF file. (Password: SSL)
+With the help of *"pdf-parser"* these URL can be extracted. After clicking the link, it downloads password protected ZIP and the password is hardcoded in PDF file. (Password: SSL)
 
 ![pdf-parser](https://user-images.githubusercontent.com/71969773/167420978-ff570896-661e-4bc8-9713-36676e13bae2.PNG)
 ![image](https://user-images.githubusercontent.com/71969773/167421586-ed1091ff-6217-4d63-be9b-43ef427f5181.png)
 
  **Stage2**
  
- The unzipped file has two batch scripts named as "SecurityDsp.bat & SSLCertificate.bat", both having identical contents with MD5 as "20e9e2e20425f5b89106f6bbace5381d"
+The unzipped file has two batch scripts named as "SecurityDsp.bat & SSLCertificate.bat", both having identical contents with MD5 as "20e9e2e20425f5b89106f6bbace5381d"
  
 The code is heavily obfuscated as below.  
 
@@ -220,7 +220,7 @@ del /f microsoft-windows-security-enterprisedata-filerevocationmanager%4%nutqtmu
 </p>
 </details>
 
-After replacing the "SET" variables with the corresponding char and doing one more replacement in Cyberchef results a clean and readable data and the whole data is available in dropdown.
+After replacing the each "SET" variables with the corresponding char and doing one more replacement in Cyberchef results a clean and readable data and the whole data is available in dropdown.
 
 ![image](https://user-images.githubusercontent.com/71969773/167426557-63f38839-02c6-4227-b4d1-a96acaaba16c.png)
 
@@ -381,22 +381,22 @@ del /f microsoft-windows-security-netlogon
 </p>
 </details>
 
-The decoded payload has capable of disabling lot and lots of security features, setting persistence using Registry and Scheduled Taks and downloading next stage payload from mentioned URLs.
+The decoded payload has capable of disabling multiple security features built in Defender, setting persistence using Registry Keys and Scheduled Taks and also downloading next stage payload from mentioned URLs.
 
 **1.** *hxxp[://]hpsj[.]firewall-gateway[.]net:80/hpjs[.]php*
 
-**2.** *hxxp[://]hpsj[.]firewall-gateway[.]net:443/uddiexplorer*
+**2.** *hxxp[://]hpsj[.]firewall-gateway[.]net:443/uddiexplorer* 
 
 ![image](https://user-images.githubusercontent.com/71969773/167432115-2419633f-1c06-42ad-a363-ee9a21d01ea1.png)
 
  **Final-Stage**
  
-The final payload downloaded from above 1st URL is stealing users info such as (HostName, UserName, OS Architecture (32/64) & Verion, AD-Domain, System IP, Admin-check, enumerating all running process etc..) All these data are encrypted with **AES-CBC** and sent over to C2 server.
+The final payload downloaded from above 1st URL is scripted in Powershell and is stealing users info such as (HostName, UserName, OS Architecture (32/64) & Verion, AD-Domain, System IP, Admin-check, enumerating all running process etc..) All these data are encrypted with **AES-CBC** and sent over to C2 server.
 
 
 ![image](https://user-images.githubusercontent.com/71969773/167436442-a3815b93-8edd-4bc3-80a0-74ba0b6357f4.png)
 
-The response from C2 server is also an AES encrypted content and for reference the returned value "LquqiDE9NWlWMN6NCrXeJg==" (extracted from Anyrun) is decoded to be "False"
+The response from C2 server is also an AES encrypted content and for reference the returned value "LquqiDE9NWlWMN6NCrXeJg==" (extracted from Anyrun) is decoded to be "False". Following CyberChef recipe can be used to decode the commands.
 
 ![image](https://user-images.githubusercontent.com/71969773/167438025-2b275aa0-2389-4413-bf61-b8564abf95e2.png)
 
@@ -404,7 +404,10 @@ Based on decoded value, the corresponding code block is going to be executed.
 
 ![image](https://user-images.githubusercontent.com/71969773/167563465-cb0eda23-f84d-4824-a744-c94c295ebbca.png)
 
-Similar stealing behavior is noticed from 2nd URL as well. 
+2nd URL is also acting as a dropper and downloads payload using powershell cmdlet. The final payload has also similar stealilng capabilities as mentioned earlier.
+
+![fin](https://user-images.githubusercontent.com/71969773/167567676-607aa8eb-2f0f-4868-9920-2813cb261a58.PNG)
+
 
 # IOC
 | Description   | URL/Hash |

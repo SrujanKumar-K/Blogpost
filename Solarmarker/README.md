@@ -50,7 +50,10 @@ This below cyberchef recipe is used to get the final payload.
 
 #### **Final Payload**
 
-The Final SolarMarker backdoor is a .NET DLL with sha256 as 56be46171da5aa65aa8ad5eec2252259fb8f9a3539c821377de357af7e459041 reflectively loaded into the memeory. The stings are encrypted through the application in two different formats, which are decoded dynamically while program execution.
+The Final SolarMarker backdoor is a .NET DLL with sha256 as 56be46171da5aa65aa8ad5eec2252259fb8f9a3539c821377de357af7e459041 reflectively loaded into the memory. The internal name of this DLL application is classified as
+
+    "BABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZVRRBgNb4WgReOQMVLyAaV0XHSX0iqLgUUUZSEVJh8BTY1BXH7mjXQp8q4jzMAp5U6APNVPSwQ"   
+The stings are encrypted through the application in two different formats, which are decoded dynamically while program execution.
 
 (i) XOR-Encryption:
 
@@ -159,4 +162,5 @@ _C2_
 
 #### References
 [^1]: https://malpedia.caad.fkie.fraunhofer.de/details/win.solarmarker
-[^2]:  https://twitter.com/James_inthe_box/status/1524794392929705987/photo/1
+[^2]:  https://twitter.com/James_inthe_box/status/1524794392929705987/photo/1  
+ [3]: https://unit42.paloaltonetworks.com/solarmarker-malware/

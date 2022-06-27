@@ -9,10 +9,11 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**:--** [Stage2](#stage2)  
 [Final Payload](#final-payload)  
 [Indicators of Compromise](#indicators-of-compromise)  
+[References](#references)
 
 ### File Information
 
-&nbsp;&nbsp;&nbsp;&nbsp;SolarMarker, a malware family known for its infostealing and backdoor capabilities include the exfiltration of auto-fill data, saved passwords and saved card information from victims’ web browsers.
+&nbsp;&nbsp;&nbsp;&nbsp;SolarMarker, a malware family known for its infostealing and backdoor capabilities include the exfiltration of auto-fill data, saved passwords and saved card information from victims’ web browsers. [^1]
 
 Victims are targeted through malspam ZIP attachment containing an embedded EXE file that initiates the infection chain. The zip sample is available [here](https://bazaar.abuse.ch/sample/e864d8d2a93f38d2714ad1f0b5f79cef79d46022cd6b29c3ed8e52c8c79e7ff9/)
 
@@ -133,6 +134,18 @@ IV
 Key
 POST
 ```
+Based on above strings as refernce, we can pressume theat the adversaries performs collects basic information about the victim machine such as Host, User, HWID, OS version and user profile data etc.  
+
+These collected data is encrypted with RSA Key and exfiltrated over C2 server **37.120.247.120** 
+
+    <RSAKeyValue><Modulus>vjEvoW8nA/5q1oDr2MU0Q5KbYV14gco/yInNeaZrfR86DKWADAQ4JZzn+IJHCLdh+h3nikjbW7tkhCvHSCDHiXoH1bNKqriZ6St525Du3DkppbTr0KC7By+r389zkV2QFelUGFGG90r8RjjFh/VQg3sT4GLOAotxI4qMrHSqpWg3wVPUa2VlP/rbZk9aJN9llsygE8PHsonC5R7AevfG53ZLKok4jM2vuCgGLNhw+VWEp4i94W8SyCY5T5CUs7sp9EwBGAwd3l1jvg2w2FON1t1IMD0nFS/ObXCbbCV1XuqQZrRJMLbyaVWa8mFbRGY23OhIXBWrfTYP9zWecRGE6w==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>
+
+![Postc2](https://user-images.githubusercontent.com/71969773/175892585-2745ef29-f003-4c99-aa96-ae752ad1e0f2.PNG)
+
+Following figure shows wireshark intercepted traffic with C2 channel,  referenced from Twitter [^2]  
+
+![image](https://user-images.githubusercontent.com/71969773/175892805-42dc1394-cf41-43f6-82c0-b38bd267c10f.png)
+
 
 #### Indicators of Compromise
 _ZIP_  
@@ -143,3 +156,7 @@ _Unpacked EXE_
 
 _C2_  
 37.120.247[.]120
+
+#### References
+[^1]: https://malpedia.caad.fkie.fraunhofer.de/details/win.solarmarker
+[^2]:  https://twitter.com/James_inthe_box/status/1524794392929705987/photo/1

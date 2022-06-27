@@ -135,3 +135,11 @@ POST
 ```
 
 #### Indicators of Compromise
+_ZIP_  
+e864d8d2a93f38d2714ad1f0b5f79cef79d46022cd6b29c3ed8e52c8c79e7ff9
+
+_Unpacked EXE_    
+56be46171da5aa65aa8ad5eec2252259fb8f9a3539c821377de357af7e459041  
+
+_C2_  
+37.120.247[.]120

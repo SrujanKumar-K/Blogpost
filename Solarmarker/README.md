@@ -12,11 +12,11 @@
 
 ### File Information
 
-&nbsp;&nbsp;&nbsp;&nbsp;SolarMarker, a malware family known for its infostealing and backdoor capabilities include the exfiltration of auto-fill data, saved passwords and saved credit card information from victims’ web browsers. The 
+&nbsp;&nbsp;&nbsp;&nbsp;SolarMarker, a malware family known for its infostealing and backdoor capabilities include the exfiltration of auto-fill data, saved passwords and saved card information from victims’ web browsers.
 
-Victims are targeted through malspam ZIP attachment containing an embedded EXE file that initiates the infection chain. The zip sample is available [Here](https://bazaar.abuse.ch/sample/e864d8d2a93f38d2714ad1f0b5f79cef79d46022cd6b29c3ed8e52c8c79e7ff9/)
+Victims are targeted through malspam ZIP attachment containing an embedded EXE file that initiates the infection chain. The zip sample is available [here](https://bazaar.abuse.ch/sample/e864d8d2a93f38d2714ad1f0b5f79cef79d46022cd6b29c3ed8e52c8c79e7ff9/)
 
-The EXE file is compiled in .Net assembly It is almost 210MB in size and it has 26/63 detection count in VirusTotal as on writing this blogpost.   
+It is a _.Net compiled binary_; **210MB** in size. It has _26/63_ detection count in VirusTotal as on writing this blogpost.   
 
 ![image](https://user-images.githubusercontent.com/71969773/175195516-9d108f7f-702d-4cce-a305-3b03b2197178.png)
 

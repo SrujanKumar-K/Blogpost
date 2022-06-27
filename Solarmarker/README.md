@@ -5,13 +5,16 @@
 ## Table of Contents
 [File Information](#file-information)  
 [Code Analysis](#code-analysis)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**:--** [Stage1](#stage1)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**:--** [Stage2](#stage2)  
 [Final Payload](#final-payload)  
+[Indicators of Compromise](#indicators-of-compromise)  
 
 ### File Information
 
 &nbsp;&nbsp;&nbsp;&nbsp;SolarMarker, a malware family known for its infostealing and backdoor capabilities include the exfiltration of auto-fill data, saved passwords and saved credit card information from victims’ web browsers. The 
 
-Victims are targeted through malspam ZIP attachment containing an embedded EXE file that initiates the infection chain. The zip sample is available at [e864d8d2a93f38d2714ad1f0b5f79cef79d46022cd6b29c3ed8e52c8c79e7ff9](https://bazaar.abuse.ch/sample/e864d8d2a93f38d2714ad1f0b5f79cef79d46022cd6b29c3ed8e52c8c79e7ff9/)
+Victims are targeted through malspam ZIP attachment containing an embedded EXE file that initiates the infection chain. The zip sample is available [Here](https://bazaar.abuse.ch/sample/e864d8d2a93f38d2714ad1f0b5f79cef79d46022cd6b29c3ed8e52c8c79e7ff9/)
 
 The EXE file is compiled in .Net assembly It is almost 210MB in size and it has 26/63 detection count in VirusTotal as on writing this blogpost.   
 
@@ -25,7 +28,7 @@ The EXE file is compiled in .Net assembly It is almost 210MB in size and it has 
 
 Below Cyberchef recipe can used to extract stage2 payload which was invoked by powershell process. 
 
-AES-Key: "CNxL4vqimJxTpB/dkmebJ09Rml9kkAr+7ZzN5orLHW0=" (Base64 format)
+AES-Key: "CNxL4vqimJxTpB/dkmebJ09Rml9kkAr+7ZzN5orLHW0=" (Base64 format)  
 AES-IV: "03421d55fea7d98abb51d5ee7e510e56" (Hex) --> taken from first 16Bytes of encoded paylaod
 
 ![image](https://user-images.githubusercontent.com/71969773/175204939-b0ae7129-f608-4de2-a52b-188f9dd3040c.png)
@@ -131,4 +134,4 @@ Key
 POST
 ```
 
-
+#### Indicators of Compromise

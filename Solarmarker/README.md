@@ -1,9 +1,14 @@
 
 # Solarmrkar a.k.a Jupyter Infostealer
 
-FIile Information
+## Table of Contents
+[File Information](#file-information)  
+[Code Analysis](#code-analysis)  
+[Final Payload](#final-payload)  
 
- SolarMarker, a malware family known for its infostealing and backdoor capabilities include the exfiltration of auto-fill data, saved passwords and saved credit card information from victims’ web browsers. The 
+### File Information
+
+&nbsp;&nbsp;&nbsp;&nbsp;SolarMarker, a malware family known for its infostealing and backdoor capabilities include the exfiltration of auto-fill data, saved passwords and saved credit card information from victims’ web browsers. The 
 
 Victims are targeted through malspam ZIP attachment containing an embedded EXE file that initiates the infection chain. The zip sample is available at [e864d8d2a93f38d2714ad1f0b5f79cef79d46022cd6b29c3ed8e52c8c79e7ff9](https://bazaar.abuse.ch/sample/e864d8d2a93f38d2714ad1f0b5f79cef79d46022cd6b29c3ed8e52c8c79e7ff9/)
 
@@ -11,7 +16,7 @@ The EXE file is compiled in .Net assembly It is almost 210MB in size and it has 
 
 ![image](https://user-images.githubusercontent.com/71969773/175195516-9d108f7f-702d-4cce-a305-3b03b2197178.png)
 
-Code-Analysis
+### Code Analysis
 #### **Stage1**
 "Dnspy" tool is used to analyze the dissassembled code. It is heavily obfucated with large randomied classes and function names. It shows that AES-CBS encryption is being used and attibutes such IV&Key are comes on the fly to decoded the obfuscated content.
 

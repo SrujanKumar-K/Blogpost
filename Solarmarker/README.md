@@ -163,4 +163,5 @@ _C2_
 #### References
 [^1]: https://malpedia.caad.fkie.fraunhofer.de/details/win.solarmarker
 [^2]:  https://twitter.com/James_inthe_box/status/1524794392929705987/photo/1  
- [3]: https://unit42.paloaltonetworks.com/solarmarker-malware/
+
+[3]: https://unit42.paloaltonetworks.com/solarmarker-malware/

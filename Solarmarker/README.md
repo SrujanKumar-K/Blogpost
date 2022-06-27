@@ -1,5 +1,6 @@
+# &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Solarmarker a.k.a Jupyter Infostealer**
 
-# Solarmrkar a.k.a Jupyter Infostealer
+
 
 ## Table of Contents
 [File Information](#file-information)  

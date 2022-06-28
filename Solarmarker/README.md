@@ -4,6 +4,9 @@
 
 ## Table of Contents
 [File Information](#file-information)  
+[Behavioural Analysis](#behavioural-analysis)   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**:--** [Static](#static)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**:--** [Dynamic](#dynamic)  
 [Code Analysis](#code-analysis)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**:--** [Stage1](#stage1)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**:--** [Stage2](#stage2)  
@@ -20,7 +23,8 @@ Victims are targeted through malspam ZIP attachment containing an embedded EXE f
 It is a _.Net compiled binary_; the file size is around **210MB**. It has _26/63_ detection count in VirusTotal as on writing this blogpost.   
 
 ![image](https://user-images.githubusercontent.com/71969773/175195516-9d108f7f-702d-4cce-a305-3b03b2197178.png)
-
+|:--:| 
+| *Figure1. VirtusTotal Detection count* |
 
 Before we go into the source analysis, lets analyze the brhaviour of malware using static & dynmic approach. 
 
@@ -34,22 +38,34 @@ By running the sample through the "_Strings & FLoss_", didnt find much useful re
 The digital cerificate parsed through Cyberchef shows below information: 
 
 ![image](https://user-images.githubusercontent.com/71969773/176126128-4a2c24aa-52ad-41e6-b522-5ff895d0b976.png)
+|:--:| 
+| *Figure2. Digital Certificate of malware* |
+
   
 #### Dynamic  
 
 Running the sample inside flare VM, it spawns multiple powershell windows in hidden mode and in parallel execute an MSI installer of a legitimate PDF program to avoid the user attention. 
 
 ![d1](https://user-images.githubusercontent.com/71969773/176131509-97eaf71f-e2d9-469d-8759-d3108bcbb2e2.PNG)
+|:--:| 
+| *Figure3. Procmon processgraph overview & Legitimate PDF installer wizard* |  
 
-The ProcessHacker tool helps in identiying the different .Net modules loaded in memory, the one in highlighted below is a malicious in nature and also extracts C2 server.  
+The ProcessHacker tool helps in identiying the different .Net modules loaded in memory, the one in highlighted below is a malicious and also we could see the extracted C2 server from its strings module.  
 
 ![d2](https://user-images.githubusercontent.com/71969773/176133414-2496357e-59c6-4b22-a595-8ea448375c7d.PNG)
+|:--:| 
+| *Figure4. ProcessHacker window*|
 
+The threat actors achives persistence just by dropping a randomized LNK file in user's startup directory and this file is linked to random folder created under TEMP directory.   
 
-![autorun](https://user-images.githubusercontent.com/71969773/176118865-d03e6378-9413-4cfb-a9ae-cc5cfe6fc85f.PNG)
+![autorun](https://user-images.githubusercontent.com/71969773/176118865-d03e6378-9413-4cfb-a9ae-cc5cfe6fc85f.PNG)  
+|:--:| 
+| *Figure5. Autorun*|
 
-![PM1](https://user-images.githubusercontent.com/71969773/176118819-303819f9-4924-4655-8f82-97040727abac.PNG)
-
+![PM1](https://user-images.githubusercontent.com/71969773/176118819-303819f9-4924-4655-8f82-97040727abac.PNG)  
+|:--:| 
+| *Figure6. Procmon filter*|
+ 
 ### Code Analysis
 #### **Stage1**
 "Dnspy" tool is used to analyze the dissassembled code. It is heavily obfucated with large randomied classes and function names. It shows that AES-CBS encryption is being used and attibutes such IV&Key are comes on the fly to decoded the obfuscated content.

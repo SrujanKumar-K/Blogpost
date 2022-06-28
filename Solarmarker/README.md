@@ -35,10 +35,16 @@ The digital cerificate parsed through Cyberchef shows below information:
 
 ![image](https://user-images.githubusercontent.com/71969773/176126128-4a2c24aa-52ad-41e6-b522-5ff895d0b976.png)
   
-  
-![Procmon](https://user-images.githubusercontent.com/71969773/176118668-8f103948-1ddd-4485-939a-6a2926253308.PNG)
+#### Dynamic  
 
-![Ph](https://user-images.githubusercontent.com/71969773/176118751-d04ab529-45bd-4ac7-a898-742d93a36a4b.PNG)
+Running the sample inside flare VM, it spawns multiple powershell windows in hidden mode and in parallel execute an MSI installer of a legitimate PDF program to avoid the user attention. 
+
+![d1](https://user-images.githubusercontent.com/71969773/176131509-97eaf71f-e2d9-469d-8759-d3108bcbb2e2.PNG)
+
+The ProcessHacker tool helps in identiying the different .Net modules loaded in memory, the one in highlighted below is a malicious in nature and also extracts C2 server.  
+
+![d2](https://user-images.githubusercontent.com/71969773/176133414-2496357e-59c6-4b22-a595-8ea448375c7d.PNG)
+
 
 ![autorun](https://user-images.githubusercontent.com/71969773/176118865-d03e6378-9413-4cfb-a9ae-cc5cfe6fc85f.PNG)
 

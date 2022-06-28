@@ -21,6 +21,17 @@ It is a _.Net compiled binary_; **210MB** in size. It has _26/63_ detection coun
 
 ![image](https://user-images.githubusercontent.com/71969773/175195516-9d108f7f-702d-4cce-a305-3b03b2197178.png)
 
+
+####  Dynamic Analysis
+
+![Procmon](https://user-images.githubusercontent.com/71969773/176118668-8f103948-1ddd-4485-939a-6a2926253308.PNG)
+
+![Ph](https://user-images.githubusercontent.com/71969773/176118751-d04ab529-45bd-4ac7-a898-742d93a36a4b.PNG)
+
+![autorun](https://user-images.githubusercontent.com/71969773/176118865-d03e6378-9413-4cfb-a9ae-cc5cfe6fc85f.PNG)
+
+![PM1](https://user-images.githubusercontent.com/71969773/176118819-303819f9-4924-4655-8f82-97040727abac.PNG)
+
 ### Code Analysis
 #### **Stage1**
 "Dnspy" tool is used to analyze the dissassembled code. It is heavily obfucated with large randomied classes and function names. It shows that AES-CBS encryption is being used and attibutes such IV&Key are comes on the fly to decoded the obfuscated content.

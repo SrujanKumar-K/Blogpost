@@ -17,13 +17,25 @@
 
 Victims are targeted through malspam ZIP attachment containing an embedded EXE file that initiates the infection chain. The zip sample is available [here](https://bazaar.abuse.ch/sample/e864d8d2a93f38d2714ad1f0b5f79cef79d46022cd6b29c3ed8e52c8c79e7ff9/)
 
-It is a _.Net compiled binary_; **210MB** in size. It has _26/63_ detection count in VirusTotal as on writing this blogpost.   
+It is a _.Net compiled binary_; the file size is around **210MB**. It has _26/63_ detection count in VirusTotal as on writing this blogpost.   
 
 ![image](https://user-images.githubusercontent.com/71969773/175195516-9d108f7f-702d-4cce-a305-3b03b2197178.png)
 
 
-####  Dynamic Analysis
+Before we go into the source analysis, lets analyze the brhaviour of malware using static & dynmic approach. 
 
+####  Behavioural Analysis
+
+#### Static  
+By running the sample through the "_Strings & FLoss_", didnt find much useful readle strings as the code is haeavily obfucated. It is an indication that the strings will be resolved dynamically. However, the orginal file name is  
+
+     wABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZRZMn63PNTTJDlrIDa2qzvPQW0AQVccp4BN8YTSRlE4LJTJR_U4TkV 
+
+The digital cerificate parsed through Cyberchef shows below information: 
+
+![image](https://user-images.githubusercontent.com/71969773/176126128-4a2c24aa-52ad-41e6-b522-5ff895d0b976.png)
+  
+  
 ![Procmon](https://user-images.githubusercontent.com/71969773/176118668-8f103948-1ddd-4485-939a-6a2926253308.PNG)
 
 ![Ph](https://user-images.githubusercontent.com/71969773/176118751-d04ab529-45bd-4ac7-a898-742d93a36a4b.PNG)

@@ -24,9 +24,11 @@ It is a _.Net compiled binary_; the file size is around **210MB**. It has _26/63
 
 ![image](https://user-images.githubusercontent.com/71969773/175195516-9d108f7f-702d-4cce-a305-3b03b2197178.png)
 |:--:| 
-| *Figure1. VirtusTotal Detection count* |
+| *Figure1. VirtusTotal Detection count* |    
 
-Before we go into the source analysis, lets analyze the brhaviour of malware using static & dynmic approach. 
+
+
+Before we go into the source analysis, lets analyze the behaviour of malware through static & dynmic approach using windows sysinternals.    
 
 ####  Behavioural Analysis
 
@@ -48,7 +50,7 @@ Running the sample inside flare VM, it spawns multiple powershell windows in hid
 
 ![d1](https://user-images.githubusercontent.com/71969773/176131509-97eaf71f-e2d9-469d-8759-d3108bcbb2e2.PNG)
 |:--:| 
-| *Figure3. Procmon processgraph overview & Legitimate PDF installer wizard* |  
+| *Figure3. Processgraph overview & Legitimate PDF installer wizard* |  
 
 The ProcessHacker tool helps in identiying the different .Net modules loaded in memory, the one in highlighted below is a malicious and also we could see the extracted C2 server from its strings module.  
 
@@ -68,7 +70,7 @@ The threat actors achives persistence just by dropping a randomized LNK file in 
  
 ### Code Analysis
 #### **Stage1**
-"Dnspy" tool is used to analyze the dissassembled code. It is heavily obfucated with large randomied classes and function names. It shows that AES-CBS encryption is being used and attibutes such IV&Key are comes on the fly to decoded the obfuscated content.
+"Dnspy" tool is used to analyze the dissassembled code. It is heavily obfucated with large randomied classes and function names. In main, it shows that AES-CBS encryption is being used and attibutes such _IV&Key_ is comes on the fly to decoded the obfuscated content.
 
 ![image](https://user-images.githubusercontent.com/71969773/175199348-729b64e9-deea-408a-96c5-619cfb591a25.png)
 |:--:| 

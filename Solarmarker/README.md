@@ -18,9 +18,9 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;SolarMarker, a malware family known for its infostealing and backdoor capabilities include the exfiltration of auto-fill data, saved passwords and saved card information from victims’ web browsers. [^1]
 
-This blog post is a technical analysis of the Jupyter info Stealer tagged as { _Polazert & solarmarker & YellowCockatoo_ }. Victims are targeted through malspam ZIP attachment containing an embedded EXE file that initiates the infection chain. The zip sample is available [here](https://bazaar.abuse.ch/sample/e864d8d2a93f38d2714ad1f0b5f79cef79d46022cd6b29c3ed8e52c8c79e7ff9/)
+This blog post is a technical analysis of the Jupyter info Stealer tagged as { _Polazert & solarmarker & YellowCockatoo_ }. Victims are targeted through malspam ZIP attachment containing an embedded EXE file that initiates the infection chain. The malware sample is available [here](https://bazaar.abuse.ch/sample/e864d8d2a93f38d2714ad1f0b5f79cef79d46022cd6b29c3ed8e52c8c79e7ff9/)
 
-It is a _.Net compiled binary_; the file size is around **210MB**. It has _26/63_ detection count in VirusTotal as on writing this blogpost.   
+It is a _.Net compiled binary_; the file size is around **210MB** and it has _26/63_ detection count in VirusTotal as on writing this blogpost.   
 
 ![image](https://user-images.githubusercontent.com/71969773/175195516-9d108f7f-702d-4cce-a305-3b03b2197178.png)
 |:--:| 
@@ -28,12 +28,12 @@ It is a _.Net compiled binary_; the file size is around **210MB**. It has _26/63
 
 
 
-Before we go into the source analysis, lets analyze the behaviour of malware through static & dynmic approach using windows sysinternals.    
+Before we jump into the source code analysis, let's analyze the behaviour of malware through static & dynmic approach using windows sysinternals inside FLARE VM.    
 
 ####  Behavioural Analysis
 
 #### Static  
-By running the sample through the "_Strings & FLoss_", didnt find much useful readle strings as the code is haeavily obfucated. It is an indication that the strings will be resolved dynamically. However, the orginal file name is  
+By running the sample through the "_Strings & FLoss_" tools, didnt find much useful readle strings as the code is haeavily obfucated. It is an indication that the strings will be resolved dynamically. However, the sample is compiled with orginal file name as  
 
      wABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZRZMn63PNTTJDlrIDa2qzvPQW0AQVccp4BN8YTSRlE4LJTJR_U4TkV 
 
@@ -46,7 +46,7 @@ The digital cerificate parsed through Cyberchef shows below information:
   
 #### Dynamic  
 
-Running the sample inside flare VM, it spawns multiple powershell windows in hidden mode and in parallel execute an MSI installer of a legitimate PDF program to avoid the user attention. 
+After executing, it spawns multiple powershell windows in hidden mode and in parallel execute an MSI installer of a legitimate PDF program to avoid the user attention. 
 
 ![d1](https://user-images.githubusercontent.com/71969773/176131509-97eaf71f-e2d9-469d-8759-d3108bcbb2e2.PNG)
 |:--:| 
@@ -58,7 +58,7 @@ The ProcessHacker tool helps in identiying the different .Net modules loaded in 
 |:--:| 
 | *Figure4. ProcessHacker window*|
 
-The threat actors achives persistence just by dropping a randomized LNK file in user's startup directory and this file is linked to random folder created under TEMP directory.   
+The threat actors achives persistence just by dropping a randomized LNK file in user's startup directory and this file is linked to random folder created under TEMP folder.   
 
 ![autorun](https://user-images.githubusercontent.com/71969773/176118865-d03e6378-9413-4cfb-a9ae-cc5cfe6fc85f.PNG)  
 |:--:| 
@@ -88,7 +88,7 @@ AES-IV: "03421d55fea7d98abb51d5ee7e510e56" (Hex) --> taken from first 16Bytes of
 #### **Stage2**
 The formated powershell code do the following things, 
 
-1. Creates random folder in **%TEMP%** directory
+1. Creates random folder in **%TEMP%** directory, consists of encrypted data
 2. **LNK** file is added to _Startup folder_ for maintaing the persistence
 3. Symmetric _AES-CBC mode_ is intialized to decoded the encrypted data blob
 4. Reflectively load the decoded EXE into memeory at defined class & function.
@@ -97,7 +97,7 @@ The formated powershell code do the following things,
 |:--:| 
 | *Figure9. Formatted output of Figure8*|
 
-This below cyberchef recipe is used to get the final payload.
+Following cyberchef recipe is used to get the final payload.
 
 ![image](https://user-images.githubusercontent.com/71969773/175225924-0f5d4bbb-f200-414f-82fe-3b58c990ecad.png)
 |:--:| 
@@ -108,7 +108,7 @@ This below cyberchef recipe is used to get the final payload.
 The Final SolarMarker backdoor is a .NET DLL with sha256 as 56be46171da5aa65aa8ad5eec2252259fb8f9a3539c821377de357af7e459041 reflectively loaded into the memory. The internal name of this DLL application is classified as
 
     "BABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZVRRBgNb4WgReOQMVLyAaV0XHSX0iqLgUUUZSEVJh8BTY1BXH7mjXQp8q4jzMAp5U6APNVPSwQ"   
-The stings are encrypted through the application in two different formats, which are decoded dynamically while program execution.
+Inside sample, the stings are encrypted in two different formats, which are decoded dynamically while program execution.
 
 (i) XOR-Encryption:
 
@@ -166,7 +166,7 @@ true
 |:--:| 
 | *Figure13. Encrypted strings through CHAR encoding*| 
 
-[This ](https://gchq.github.io/CyberChef/#recipe=Find_/_Replace(%7B'option':'Regex','string':'%5Ct%5Ct%5Ct'%7D,'',true,false,true,false)Filter('Line%20feed','string%20arg%7Cint%20num(%5C%5Cd%2B)?%5C%5Cs%2B%5C%5C%3D%5C%5Cs%2B%5C%5Cd%7B2,%7D%7C%5C%5C(char%5C%5C)%5C%5C(%7Creturn%20arg%20%2B',false)Find_/_Replace(%7B'option':'Regex','string':'string%20%7C;%7Cint%20'%7D,'',true,false,true,false)Find_/_Replace(%7B'option':'Regex','string':'(%5C%5Cd%2B%5C%5C))'%7D,'int($1)',true,false,true,false)Find_/_Replace(%7B'option':'Regex','string':'(?%3C%3Dnum%5C%5Cd%2B%5C%5Cs%2B%5C%5C%3D%5C%5Cs%2B)(%5C%5Cd%2B)'%7D,'int($1)',true,false,true,false)Find_/_Replace(%7B'option':'Regex','string':'char'%7D,'chr',true,false,true,false)Find_/_Replace(%7B'option':'Regex','string':'return(.*)'%7D,'print(%22%5C%5C%5C%5Cn%22%2B$1)',true,false,true,false)Filter('Line%20feed','',false)) cyberchef recipe will convert the code into python format. And upon executing it python complier, we could see both ascii and unreadable data.  
+[This ](https://gchq.github.io/CyberChef/#recipe=Find_/_Replace(%7B'option':'Regex','string':'%5Ct%5Ct%5Ct'%7D,'',true,false,true,false)Filter('Line%20feed','string%20arg%7Cint%20num(%5C%5Cd%2B)?%5C%5Cs%2B%5C%5C%3D%5C%5Cs%2B%5C%5Cd%7B2,%7D%7C%5C%5C(char%5C%5C)%5C%5C(%7Creturn%20arg%20%2B',false)Find_/_Replace(%7B'option':'Regex','string':'string%20%7C;%7Cint%20'%7D,'',true,false,true,false)Find_/_Replace(%7B'option':'Regex','string':'(%5C%5Cd%2B%5C%5C))'%7D,'int($1)',true,false,true,false)Find_/_Replace(%7B'option':'Regex','string':'(?%3C%3Dnum%5C%5Cd%2B%5C%5Cs%2B%5C%5C%3D%5C%5Cs%2B)(%5C%5Cd%2B)'%7D,'int($1)',true,false,true,false)Find_/_Replace(%7B'option':'Regex','string':'char'%7D,'chr',true,false,true,false)Find_/_Replace(%7B'option':'Regex','string':'return(.*)'%7D,'print(%22%5C%5C%5C%5Cn%22%2B$1)',true,false,true,false)Filter('Line%20feed','',false)) cyberchef recipe will convert the code into python format. And upon executing it with python complier, we could see both ascii and unreadable data.  
 
 
 Listing below few are for refernce.
@@ -201,7 +201,7 @@ IV
 Key
 POST
 ```
-Based on above strings as refernce, we can pressume theat the adversaries performs collects basic information about the victim machine such as Host, User, HWID, OS version and user profile data etc.  
+Based on above strings as refernce, we can pressume theat the adversaries collects basic system information such as Host, User, HWID, OS version and user profile data etc.  
 
 These collected data is encrypted with RSA Key and exfiltrated over C2 server **37.120.247.120** 
 
